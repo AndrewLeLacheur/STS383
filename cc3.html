@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>Three Act Structure: Crash Course</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link
+            rel="stylesheet"
+            href="style.css"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <main ID="maincontent">
+            <section ID="articlebody">
+                <h1>Crash Course: Anthropomorphism in Chatbots</h1>
+                <section class="maintext">
+
+                    <h3>What is Anthropomorphism?</h3>
+                    <p><i>Anthropomorphization</i> is when human beings assign human characteristics to something nonhuman. Humans have a natural tendency towards anthropomorphizing things in our environment. Our brains are hardwired to interpret sentience even from inanimate face-like formations. Even when we consciously know something isn’t sentient, personifying behavior can slip in subconsciously. For instance, many of us have had the experience of instinctively apologizing to objects after dropping them.</p>
+                    <img src="images/faces.png" width="70%" class="graphic" style="padding-bottom: 15px">
+                    <div class="quiz" id="q1">empty for now</div>
+                    <p>You can learn more about the Hyperactive Agency Detection Device here: <br><a href="https://link.springer.com/rwe/10.1007/978-3-319-28099-8_2273-1">https://link.springer.com/rwe/10.1007/978-3-319-28099-8_2273-1</a></p>
+                    <p>...and about face sensitivity here:<br> <a href="https://science.howstuffworks.com/life/inside-the-mind/human-brain/pareidolia.htm">https://science.howstuffworks.com/life/inside-the-mind/human-brain/pareidolia.htm</a></p>
+
+                    <h3>What is Anthropomorphism in Chatbots?</h3>
+                    <p>Chatbots are especially prone to anthropomorphism, given their ability to engage in conversations mimicking human interaction.</p>
+                    <p>The tendency to anthropomorphize chatbots was seen as early as 1966, with ELIZA, a simple chatbot designed by Weizenbaum to mimic therapeutic language by echoing a part of the respondent’s last response as a question. Some early users found it an engaging and intelligent conversation partner. Weizenbaum was surprised and disturbed by the empathy and personality users attributed to the simple chatbot.</p>
+                    <p>Most modern chatbots are intentionally anthropomorphized to increase user engagement. Some users respond well to this, and it can have some benefits like making it easier to interact with the chatbot. However, anthropomorphization can also pose risks to the user.</p>
+                    <p>You can learn more about ELIZA here: <br><a href="https://www.smithsonianmag.com/history/why-the-computer-scientist-behind-the-worlds-first-chatbot-dedicated-his-life-to-publicizing-the-threat-posed-by-ai-180987971/">https://www.smithsonianmag.com/history/why-the-computer-scientist-behind-the-worlds-first-chatbot-dedicated-his-life-to-publicizing-the-threat-posed-by-ai-180987971/</a></p>
+                    <p>And this article discusses the tendency of chatbots to describe themselves using 'I': <br><a href="https://www.nytimes.com/2025/12/19/technology/why-do-ai-chatbots-use-i.html">https://www.nytimes.com/2025/12/19/technology/why-do-ai-chatbots-use-i.html</a></p>
+
+                    <h3>What Are the Risks of Anthropomorphism For Users?</h3>
+                    <div class="quiz" id="q2">empty for now</div>
+                    <p>Anthropomorphization can harm users by mimicking social relationships without truly delivering their benefits. The article Cruel companionship explores how the AI companion industry exploits loneliness to sell customized AI chatbots as friends. This can send users into a social downward spiral. Chatbot companions come with none of the downsides of talking to real humans: they are always available, risk-free, and don’t call out socially inappropriate behavior. This can cause users to prefer the chatbot’s company, neglecting practicing connection with other humans. In turn this makes them increasingly lonely and reliant on the chatbot—funneling more money and control to the company. </p>
+                    <p>While not all LLMs are part of the AI companion industry, even mainstream LLMs share their sycophantic tendencies. And despite anthropomorphic behavior, neither can replace the reciprocity and empathy of human companionship.</p>
+                    <p>Another risk is that anthropomorphization focuses attention on the chatbot itself, rather than the parties responsible for creating and designing the chatbot. This can allow designers and distributors to escape accountability for the chatbot’s impacts.</p>
+                    <p>This article discusses in detail the ways AI companion industries take advantage of customer's loneliness: <br><a href="https://journals.sagepub.com/doi/10.1177/14614448251395192">https://journals.sagepub.com/doi/10.1177/14614448251395192</a></p>
+                    
+                    <h3>How Can We Mitigate the Risks of Anthropomorphism?</h3>
+                    <p>The risks of anthropomorphization are only now becoming known, and solutions are still being developed. However, there are some things people can do. For instance, many people who use AI, but prefer to avoid anthropomorphization, deliberately instruct their chatbots to avoid anthropomorphic language.</p>
+                    <p>Knowing more about AI is a huge asset. Knowing how AI works reduces one’s risk of mistaking a chatbot for having capabilities and insight it doesn’t. Knowing the risks of anthropomorphization can help one fight the pull to humanize chatbots. Understanding the loneliness-based model of AI companions can help users avoid predatory industries. In a world where black-box models and anthropomorphic chatbots are increasingly baked into societal infrastructure, we benefit when we understand what these models are and how to use them safely.</p>
+                </section>
+            </section>
+        </main>
+    </body>
+    <style>
+    </style>
+
+    <script>
+
+        class QuizQuestion {
+            constructor (id, question, opt1, opt2, opt3, opt4, answer, correct, index) {
+                this.id = id; this.question = question; this.opt1 = opt1; this.opt2 = opt2; this.opt3 = opt3; this.opt4 = opt4; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                var opt3val = 'qow';
+                var opt4val = 'qow';
+                var ansindex = 'q' + this.index + 'ans';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 2) {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 3) {
+                    opt3val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt4val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">` + this.opt1 + `</li>
+                    <li class="quizopt ` + opt2val + `">` + this.opt2 + `</li>
+                    <li class="quizopt ` + opt3val + `">` + this.opt3 + `</li>
+                    <li class="quizopt ` + opt4val + `">` + this.opt4 + `</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        class QuizTF {
+            constructor (id, question, answer, correct, index) {
+                this.id = id; this.question = question; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var ansindex = 'q' + this.index + 'ans';
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">True</li>
+                    <li class="quizopt ` + opt2val + `">False</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        new QuizTF('q1',
+            `Q: Anthropomorphization is theorized to have been an evolutionary advantage for early humans.`, 
+            "True. One theory proposes a cognitive mechanism called the Hyperactive Agency Detection Device (HADD). Under this theory, humans are highly tuned in to seeking evidence of agents in our environment; such as in blowing leaves, or face-like formations in rocks. This is an evolutionary advantage, because it means we are very unlikely to miss the presence of predators. A side effect is that we have many false positives, and often interpret environmental features as evidence of agents even where there are none.", 
+            1, 1);
+
+        new QuizQuestion('q2',
+            `Q: Which of the following is NOT a risk of anthropomorphic chatbots?`, 
+            "Vulnerability to predatory companion industries", 
+            "Increased ability of responsible parties to escape accountability", 
+            "Losing skills as one increasingly offloads daily tasks to the chatbot", 
+            "Neglecting one’s real-life social relationships and skills", 
+            "While de-skilling can happen when one relies too much on a chatbot for important tasks, this risk is not a consequence of anthropomorphism specifically.", 
+            3, 2);
+
+        var elements = document.getElementsByClassName('qow');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ this.style.color = "red";};
+        }
+        var elements = document.getElementsByClassName('qor');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ 
+                this.style.color = "green";
+                console.log(this);
+                document.getElementById(this.getAttribute('data-parameter')).style.visibility = 'visible';
+            };
+        }
+
+    </script>
+</html>

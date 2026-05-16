@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <title>Three Act Structure: Crash Course</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link
+            rel="stylesheet"
+            href="style.css"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <main ID="maincontent">
+            <section ID="articlebody">
+                <h1>Crash Course: How Does AI Work?</h1>
+                <section class="maintext">
+                    <h3>What is AI?</h3>
+                    <p>While ‘artificial intelligence’ is used inconsistently and very hard to define, in the past several years, the most recent boom in AI has surrounded particular types of machine learning models, especially Large Language Models (LLMs).</p>
+                    <img class='graphic' src='images/history.png' width="55%">
+                    <p>You can read more about the history of artificial intelligence here: <br><a href="https://st.llnl.gov/news/look-back/birth-artificial-intelligence-ai-research">https://st.llnl.gov/news/look-back/birth-artificial-intelligence-ai-research</a></p>
+                    <div class="quiz" id="q1">empty for now</div>
+
+                    <h3>What is Machine Learning?</h3>
+                    <p>Machine learning is a sub-field of artificial intelligence studying how statistical models can learn patterns from data, and generalize those patterns to new data. This section explains the basics of how some simple machine learning processes work.</p>
+                    <p>A simple machine learning algorithm might try to find a rule to predict the average age of a certain type of plant given its height. For this example, we’ll assume these have a linear relationship.</p>
+                    <img class='graphic' src='images/datapoints.png' width="50%">
+                    <p>You probably recognize this equation describing linear functions:</p>
+                    <img class="graphic" src="images/equation.png" width="60%">
+                    <p>To find the best linear equation to fit our data, we want to find what values of m and b give us the most accurate predicted age (y) for each input height (x). In this example, m and be are our <i>parameters</i>.</p>
+                    <p>So how do machine learning algorithms actually figure out optimal parameters from a dataset? Most machine learning algorithms learn through gradient descent. Gradient descent usually follows these (simplified) steps:</p>
+                    <ol>
+                        <li>Set parameters m and b to random values.</li>
+                        <li>Using our model, calculate the predicted plant age for an input plant height.</li>
+                        <li>Compare predicted age to the actual known age to get the ‘error’, or ‘risk’.</li>
+                        <li>Based on the size and direction of the error, adjust our parameters m and b closer to their optimal value by a small amount.</li>
+                    </ol>
+                    <p>Ideally, by the end of gradient descent, we will reach the parameter values at the minimum point on this graph, where error is minimized.</p>
+                    <img class='graphic' src='images/gradientdescent.png' width="50%">
+                    <p>In practice, gradient descent is much more complicated and precise, working simultaneously with many input variables, many parameters, algorithms determining exactly how much to adjust parameters, and rules deciding when to stop. But this is, in principle, how most machine learning algorithms are trained.</p>
+                    <p>This example used a single-variable linear model. A multi-variable linear model might try to predict height by using height, color, and leaf size. And of course, not all relationships are linear. Sometimes other kinds of equations might be better suited to describe the relationships between data. For instance, the data below is clearly not well-described by a linear best fit line.</p>
+                    <img src="images/nonlinear.png" width="50%" class="graphic">
+                    <p>Similarly, not all outputs are numerical. For example, we might want to use these features to predict plant type instead of plant age. When we are trying to predict a numerical value this is called <i>regression</i>, and when we are trying to predict a categorical value, this is called <i>classification</i>.</p>
+                    <p>If you want to learn more about the principles of machine learning:</p>
+                    <div class="quiz" id="q2">empty for now</div>
+
+                    <h3>What is a Neural Network?</h3>
+                    <p>A neural network is a type of machine learning model consisting of interconnected units called ‘neurons’ or ‘nodes’.</p>
+                    <p>Here’s an example of a simple neural network using our plant example:</p>
+                    <img class='graphic' src='images/weightednet.png' width="80%">
+                    <p>Inputs travel through each of the connections and are transformed by model parameters in each connection and node. For each node, the multiplied input and parameter of each arrow are added together. Then the ‘bias’ term inside the node is added at the end, and the node’s calculated value is used as an input to the next layer. This calculation is performed for each node at each layer, until the output is calculated.</p>
+                    <img class='graphic' src='images/calcdnet.png' width="90%">
+                    <p>Neural networks are trained using gradient descent through a process called backpropagation, where model parameters in the network are updated backwards from the outputs, using the chain rule to update them precisely.</p>
+                    <p>You may see the word ‘weight’ used interchangeably with parameter: they have very similar meanings, but weight is specifically the type of parameter describing connections between nodes.</p>
+                    <p>Neural networks can have many inputs, and be used for regression and classification. The example below shows a classification net with multiple inputs.</p>
+                    <img src="images/categoricalnet.png" width="80%" class="graphic">
+                    <p>Neural networks can have hundreds of layers, hundreds of nodes per layer, and many different types of layers suited to different tasks.</p>
+                    <p>Neural networks can be trained flexibly to perform tasks that other models with precisely defined relationships (such as linear classifiers) fail at. However, neural networks are far less <i>interpretable</i>. While we can easily look at the final parameters of our linear classifier and see what inputs are weighted the most strongly, it can be much harder to do this with neural networks. This makes them black box models, where it’s unclear why a model makes decisions the way it does, even though those decisions might be very accurate.</p>
+                    <p>If you want to learn more about machine learning and neural networks, the youtube channel 3blue1brown has a lot of videos on the subject, at different levels of complexity:<br><a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw</a> </p>
+
+                    <h3>How do Large Language Models Work?</h3>
+                    <div class="quiz" id="q3">empty for now</div>
+                    <p>Large language models are machine learning models that have been trained to predict the next most likely word based on the words that have come before it. They have been trained on billions of sentences, and have gotten extremely accurate.</p>
+                    <p>In particular, the use of <i>transformers</i> allows chatbots to flexibly incorporate context into their responses. Transformers collapse the words from earlier in the conversation into a “context vector” that can be fed as an input into the chatbot’s prediction of the next word. This is how chatbots appear to ‘remember’ previous exchanges.</p>
+                    <p>If you want to learn more about transformers, this is a great article going over the architecture of LLMs in more detail:<br><a href="https://mark-riedl.medium.com/a-very-gentle-introduction-to-large-language-models-without-the-hype-5f67941fa59e">https://mark-riedl.medium.com/a-very-gentle-introduction-to-large-language-models-without-the-hype-5f67941fa59e</a></p>
+                </section>
+            </section>
+        </main>
+    </body>
+    <style>
+        
+    </style>
+
+    <script>
+
+        class QuizQuestion {
+            constructor (id, question, opt1, opt2, opt3, opt4, answer, correct, index) {
+                this.id = id; this.question = question; this.opt1 = opt1; this.opt2 = opt2; this.opt3 = opt3; this.opt4 = opt4; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                var opt3val = 'qow';
+                var opt4val = 'qow';
+                var ansindex = 'q' + this.index + 'ans';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 2) {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 3) {
+                    opt3val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt4val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">` + this.opt1 + `</li>
+                    <li class="quizopt ` + opt2val + `">` + this.opt2 + `</li>
+                    <li class="quizopt ` + opt3val + `">` + this.opt3 + `</li>
+                    <li class="quizopt ` + opt4val + `">` + this.opt4 + `</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        class QuizTF {
+            constructor (id, question, answer, correct, index) {
+                this.id = id; this.question = question; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var ansindex = 'q' + this.index + 'ans';
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">True</li>
+                    <li class="quizopt ` + opt2val + `">False</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        new QuizQuestion('q1',
+            `Q: Modern AI is a departure from traditional AI models of the 1970s. Which of the following is NOT a typical feature of traditional AI?`, 
+            "If-then logic", 
+            "Symbolic logic", 
+            "Agents embedded in an environment", 
+            "Interpretable hierarchies", 
+            "Traditional AI focused heavily on a logical and computational approach to artificial intelligence. Later approaches focused more on the role of the body and environment. It was as part of this later wave that connectionist networks were developed as a way to model the way humans think about categories. These models became the first neural networks.", 
+            3, 1);
+
+        new QuizQuestion('q2',
+            `Q: What is NOT a reason gradient descent might fail to converge on a good solution?`, 
+            "The stopping criteria (the rule for when to stop the gradient descent process) is set too broadly", 
+            "The algorithm converges to a local minimum of error instead of the global minimum", 
+            "The model type chosen is inappropriate for the data", 
+            "The learning rate (degree by which parameters are adjusted) is set too low", 
+            "With stopping criteria that are too broad, the algorithm might stop too soon, and miss the best solution. If the algorithm finds a set of parameters for which error is lowest for any immediate adjustments that can be made to those parameters (a local minimum), it might miss a better overall solution with very different parameters (a global minimum). If a linear model is used for non-linear data, the model is unlikely to be accurate. But while a low learning rate might cause the algorithm to take an extremely long time to run, it should finish eventually.", 
+            4, 2);
+
+        new QuizQuestion('q3',
+            `Q: How do large language models ‘remember’ previous conversations?`, 
+            "Records of all previous conversations are passed into the model as input", 
+            "A collapsed 'context vector' of previous interactions is passed into the model as input", 
+            "‘Memory’ emerges naturally from the standard techniques LLMs use to predict the next word", 
+            "LLMs search their memory records for information on a case-by-case basis when necessary", 
+            "LLMs use 'transformers' (touched on below) to collapse relevant information from previous exchanges into a 'context vector' that informs how they respond to new input.", 
+            2, 3);
+
+        //var testTF = new QuizTF('emptyquizslottest2', "test true false", "this is the tf answer", 1, 3);
+        //document.getElementById("emptyquizslottest2").innerHTML = testTF.build();
+
+        var elements = document.getElementsByClassName('qow');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ this.style.color = "red";};
+        }
+        var elements = document.getElementsByClassName('qor');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ 
+                this.style.color = "green";
+                console.log(this);
+                document.getElementById(this.getAttribute('data-parameter')).style.visibility = 'visible';
+            };
+        }
+
+    </script>
+</html>

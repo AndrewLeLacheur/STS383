@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <title>Three Act Structure: Crash Course</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link
+            rel="stylesheet"
+            href="style.css"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <main ID="maincontent">
+            <section ID="articlebody">
+                <h1>Crash Course: Algorithmic Bias</h1>
+                <section class="maintext">
+
+                    <h3>What is Algorithmic Bias and Why Does it Happen?</h3>
+                    <p>Algorithmic bias is when a statistical algorithm repeatedly produces ‘unfair’ outcomes, such as unfairly disadvantageing a particular group. </p>
+                    <p>Algorithms are often introduced to systems to remove the fallible human elements that are perceived as inherently imperfect or biased. The algorithm is seen as a solution to human failing: a cool and rational machine that will always make a decision based on logic rather than emotion. However, this thought process can disguise algorithms that are just as biased—or more—as their human counterparts. Algorithms trained on real-world data internalize the real-world biases found in that data.</p>
+                    <div class="quiz" id="q1">empty for now</div>
+
+                    <h3>What does Algorithmic Bias Look Like?</h3>
+                    <div class="quiz" id="q2">empty for now</div>
+                    <p>One well-known example of algorithmic bias is the COMPAS algorithm, an algorithm built to predict likelihood of recidivism in people who committed a crime. The algorithmic inputs did not contain information about race, so many assumed that the algorithm must be unbiased, and more fair towards people of all races than potentially biased humans.</p>
+                    <p>However, Angwin et al. took a closer look, they found that while the algorithm had similar accuracy rates across racial groups, its false positive rates were much higher for nonwhite people, and its false negative rates were much higher for white people. In other words, the algorithm was more likely to incorrectly predict a black person was a high risk, and incorrectly predict a white person was a low risk. The algorithm was biased against nonwhite people.</p>
+                    <img src="images/racialbias.png" width="80%" class="graphic">
+                    <p style="font-size: 15px">Caption: An illustration of what biased false positives and negatives look like</p>
+                    <p>While the algorithm could not see race, race correlated strongly with many of the other factors in the dataset, such as income level and history in foster care. Because the humans whose decisions built the original dataset had made biased decisions, the model was rewarded for predicting recidivism in people who had indicators strongly correlated with race. The training data was racially biased, so the algorithm faithfully replicated that bias despite having no ability to detect race.</p>
+                    <p>You can read more about the COMPAS algorithm here: <br><a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing</a></p>
+                    <div class="quiz" id="q3">empty for now</div>
+                    <p>You can learn more about Amazon's hiring algorithm here:<br><a href="https://www.reuters.com/article/world/insight-amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK0AG/">https://www.reuters.com/article/world/insight-amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK0AG/</a></p>
+
+                    <h3>How Can We Identify, Mitigate, and Prevent Algorithmic Bias?</h3>
+                    <p>There are a number of techniques programmers can use to identify and reduce algorithmic bias. Checking for measures such as false positive and negative rate in addition to just accuracy across demographic groups is one way. There are a number of tools available to programmers that can test whether a model is unfairly paying attention to certain sensitive features. However, programming solutions are imperfect. Balancing the false positive and negative rate sacrifices accuracy. There is no perfect programming solution for biases that exist in the training data.</p>
+                    <p>Collecting less biased data going forward is important. Many staple datasets contain and perpetuate outdated stereotypes. For instance, <a href="https://image-net.org/">ImageNet</a> is an old image-labeling dataset used as a starting point for many image classification nets. But this dataset contains category labels and associations we would consider offensive today. Continued building off models coded on this dataset carries those offensive connotations forward into new models. In order to completely eliminate these features, we would have to go back to the source. We would need to re-label the data, and retrain all the models that were previously trained on the old version. This would be incredibly difficult and time consuming to do.</p>
+                    <p>Collecting and labeling better data is an important step, but it's not a perfect solution. Biases exist in the real world, and it’s impossible to completely disentangle the facets of reality we don’t want to capture from those we do. What’s more, datasets collected today will surely contain biases we don’t think are issues now, but will grow to realize are an issue as societal values shift.</p>
+                    <p>With this in mind, it’s important for us to avoid unreservedly trusting the algorithms that exist in our daily lives, and to avoid putting them in positions of decision-making authority without accountable humans in the loop. Algorithms are only as good as their programming; perfectly programmed algorithms are only as good as their data; and data is only as good as the world it comes from. Algorithms cannot eliminate bias from life: they can only reflect and amplify the world we live in.</p>
+                </section>
+            </section>
+        </main>
+    </body>
+    <style>
+    </style>
+
+    <script>
+
+        class QuizQuestion {
+            constructor (id, question, opt1, opt2, opt3, opt4, answer, correct, index) {
+                this.id = id; this.question = question; this.opt1 = opt1; this.opt2 = opt2; this.opt3 = opt3; this.opt4 = opt4; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                var opt3val = 'qow';
+                var opt4val = 'qow';
+                var ansindex = 'q' + this.index + 'ans';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 2) {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                } else if (this.correct == 3) {
+                    opt3val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt4val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">` + this.opt1 + `</li>
+                    <li class="quizopt ` + opt2val + `">` + this.opt2 + `</li>
+                    <li class="quizopt ` + opt3val + `">` + this.opt3 + `</li>
+                    <li class="quizopt ` + opt4val + `">` + this.opt4 + `</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        class QuizTF {
+            constructor (id, question, answer, correct, index) {
+                this.id = id; this.question = question; this.answer = answer; this.correct = correct; this.index = index;
+                this.build();
+            }
+            build() {
+                //Set correct option
+                var ansindex = 'q' + this.index + 'ans';
+                var opt1val = 'qow';
+                var opt2val = 'qow';
+                if (this.correct == 1) {
+                    opt1val = `qor" data-parameter="` + ansindex;
+                } else {
+                    opt2val = `qor" data-parameter="` + ansindex;
+                }
+                    
+                //Build html
+                var htmlbit = `<p class="quizq">` + this.question + `</p><ul><li class="quizopt ` + opt1val + `">True</li>
+                    <li class="quizopt ` + opt2val + `">False</li></ul>
+                    <p class="quizans" id="` + ansindex + `" style="visibility: hidden">` + this.answer + `</p>`;
+                
+                document.getElementById(this.id).innerHTML = htmlbit;
+            }
+        }
+
+        new QuizQuestion('q1',
+            `Q: Which of the following is true?`, 
+            "Algorithmic bias can be prevented by testing a model for high accuracy across all demographic groups", 
+            "Algorithmic bias can be prevented by adjusting false positive rates after model training", 
+            "Algorithmic bias can be prevented by training on a completely unbiased dataset", 
+            "It’s impossible to prevent algorithmic bias", 
+            "Algorithmic bias can be improved by testing for accuracy and false positive rates (see below), but biases cannot be entirely separated from their dataset. Only a completely unbiased dataset can produce a completely unbiased model.<br><br>That said, as we’ll see, using an ‘unbiased’ dataset doesn’t solve all problems. For one thing, it’s difficult to be sure a dataset is genuinely unbiased: real-world prejudices can seep into every area of life. For another, datasets we consider unbiased now may become obvious to us as biased in the future, as our societal values shift. And even with a legitimately unbiased dataset, there are inherent limits to algorithmic problem solving that no amount of data can fix.", 
+            3, 1);
+
+        new QuizTF('q2',
+            `Q: Removing information on sensitive characteristics like race and gender can prevent algorithmic bias.`, 
+            "False: Bias can emerge even in models that only pay attention to non-sensitive characteristics, because these unrelated-seeming characteristics can correlate with sensitive ones.", 
+            2, 2);
+
+        new QuizQuestion('q3',
+            `Q: In another case of algorithmic bias, Amazon once trained a hiring algorithm to assess resumes and pass on the most qualified candidates. However, having been trained on past judgments by mostly-male hiring managers, the algorithm was extremely biased against women. Resumes were downgraded for even containing the word ‘woman’, or for graduating from an all-women’s college. What did Amazon do about this?`, 
+            "Continued using the algorithm for hiring as if there was no problem", 
+            "Re-trained the model on a subset of data deemed to be unbiased", 
+            "Adjusted the model so false positives and negatives for women and men were equal; at a moderate accuracy cost", 
+            "Decided the model was unsalvageable, and stopped using it", 
+            "Amazon discarded the model after realizing how much bias it showed in its outputs.", 
+            4, 3);
+
+        var elements = document.getElementsByClassName('qow');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ this.style.color = "red";};
+        }
+        var elements = document.getElementsByClassName('qor');
+        for(var i = 0; i < elements.length; i++){
+            elements[i].onclick = function(){ 
+                this.style.color = "green";
+                console.log(this);
+                document.getElementById(this.getAttribute('data-parameter')).style.visibility = 'visible';
+            };
+        }
+
+    </script>
+</html>
